@@ -34,16 +34,16 @@ class HomeFooter extends Component {
 }
 
 
-// const mapStateToProps = state => {
-//     return {
-//         isLoggedIn: state.user.isLoggedIn,
-//         language: state.app.language,
-//     };
-// };
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
+    };
+};
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//     };
-// };
+const mapDispatchToProps = dispatch => {
+    return {
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeFooter);

@@ -180,19 +180,19 @@ class HomeHeader extends Component {
 
 
 
-// const mapStateToProps = state => {
-//     return {
-//         isLoggedIn: state.user.isLoggedIn,
-//         language: state.app.language,
-//         user: state.user.userInfo
-//     };
-// };
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
+        user: state.user.userInfo
+    };
+};
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         changeLanguageAppRedux: (language) => dispatch(actions.changeLanguageApp(language)),
-//         handleLogout: () => dispatch(actions.processLogout())
-//     };
-// };
+const mapDispatchToProps = dispatch => {
+    return {
+        changeLanguageAppRedux: (language) => dispatch(actions.changeLanguageApp(language)),
+        handleLogout: () => dispatch(actions.processLogout())
+    };
+};
 
-// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));
