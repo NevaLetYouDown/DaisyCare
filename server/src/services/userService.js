@@ -297,7 +297,7 @@ let getAllCodeService = (typeInput) => {
 			}
 			let res = {};
 			let allcode = await db.Allcode.findAll({
-				where: { keyMap: typeInput }
+				where: { type: typeInput }
 			});
 			res.errCode = 0;
 			res.data = allcode;
