@@ -10,12 +10,11 @@ let app = express();
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  const allowedOrigins = [process.env.MOBILE_APP, process.env.URL_REACT1, process.env.URL_REACT2, process.env.URL_REACT3];
-  const origin = req.headers.origin;
-  if (origin && allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-
+  // const allowedOrigins = [process.env.MOBILE_APP, process.env.URL_REACT1, process.env.URL_REACT2, process.env.URL_REACT3];
+  const headers = req.headers;
+  const domain = headers.origin || headers.host
+  // if (domain && allowedOrigins.includes(domain)) {
+  res.setHeader('Access-Control-Allow-Origin', domain);
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
@@ -28,12 +27,23 @@ app.use(function (req, res, next) {
 
   // Pass to next layer of middleware
   next();
+  // } else {
+  //   return res.status(505).json({ msg: 'forbidden' })
+  // }
 });
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 viewEngine(app);
 initWebRoutes(app);
+
+// Serve the static files from the React app
+// app.use('/', express.static('./src/client'));
+// Handles any requests that don't match the ones above
+// app.get('*', (req, res) => {
+//   res.redirect('/')
+//   // res.sendFile('./src/client/index.html');
+// });
 
 connectDB();
 
